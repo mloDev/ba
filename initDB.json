@@ -1,15 +1,15 @@
 [
   {
     "_class": "de.mlo.ba.bootfaces.domain.Employee",
+    "id": 1,
     "name": "Schneider",
     "surName": "Tobias",
+    "email": "schneiderTobias@stud.de",
     "title": {
         "_class": "de.mlo.ba.bootfaces.domain.Title",
     	"title": "B.Sc",
     	"degrade": true
     	}
-    ,
-    "email": "schneiderTobias@stud.de"
   },
   {
     "_class": "de.mlo.ba.bootfaces.domain.Student",
@@ -18,6 +18,19 @@
     "surName": "Hans",
     "matNo": 12345,
     "email": "hanspeter@stud.de"
+  },
+    {
+    "_class": "de.mlo.ba.bootfaces.domain.Req",
+    "id": 0,
+    "name": "Krank",
+    "student": {
+        "_class": "de.mlo.ba.bootfaces.domain.Student",
+    	"id": 2,
+    	"name": "Ort",
+    	"surName": "Ralf",
+    	"matNo": 1234567,
+    	"email": "ralfort@stud.de"
+    	}
   }
 
 ]

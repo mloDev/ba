@@ -23,18 +23,32 @@
                 <h:outputText value="#{student.matNo}"/>
                 <p:outputLabel value="Number of pages : "/>
                 <h:outputText value="#{student.EMail}"/>
+                <p:outputLabel value="Number of requests : "/>
+                <h:outputText value="#{student.reqList.size()}"/>
             </p:panelGrid>
+            
+                        <p:dialog widgetVar="requestAddDlg" modal="false">
+    			<p:fieldset legend="Create a New Request">
+                <h:panelGrid columns="2" border="0"  layout="grid" style="margin: 20px;">
+                    <p:outputLabel value="Name : "/>
+                    <p:inputText id="Name" value="#{req.name}" size=""/>
+                    <p:outputLabel value="Student : "/>
+            		<p:outputLabel id="title" value="#{student.name}" style="width:150px"/>
+                </h:panelGrid>
+                <p:commandButton value="Create" update="requestlist" oncomplete="PF('requestAddDlg').hide();" actionListener="#{reqModel.doCreateRequest()}"/>
+			</p:fieldset>
+			</p:dialog>
             
             <h3 class="title ui-widget-header ui-corner-all" style="font-family: Arial, sans-serif;">
             	List of Anträge	
-            	<p:commandButton sytleClass="pull-right" value="Add Antrag" type="button" onclick="PF('employeeAddDlg').show();" />
+            	<p:commandButton sytleClass="pull-right" value="Add Antrag" type="button" onclick="PF('requestAddDlg').show();" />
             </h3>
-            <p:dataTable id="employeelist" var="emp" value="#{empModel.findAllEmployees()}">
+            <p:dataTable id="requestlist" var="st" value="#{student.reqList}">
         		<p:column headerText="Antrag">
-        		    <h:outputText value="#{emp.gender}" />
+        		    <h:outputText value="#{st.name}" />
        			</p:column>
         		<p:column style="width:32px;text-align: center">
-        			<p:button icon="ui-icon-search" outcome="viewStudent.xhtml?id=#{emp.id}"> </p:button>
+        			<p:button icon="ui-icon-search" outcome="viewReq.xhtml?id=#{st.id}"> </p:button>
         		</p:column>
     		</p:dataTable>
         </ui:define>

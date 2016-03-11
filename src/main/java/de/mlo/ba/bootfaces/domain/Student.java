@@ -1,5 +1,8 @@
 package de.mlo.ba.bootfaces.domain;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
 
 import de.mlo.ba.enums.Gender;
@@ -7,6 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Table(name = "students")
 public class Student {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -49,6 +53,18 @@ public class Student {
 	@Getter
 	@Setter
 	private Gender gender;
+	
+	@OneToMany(mappedBy="student", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@Getter
+	@Setter
+	private Set<Req> reqList;
+	
+    @Override
+    public boolean equals(Object object) {
+        return (object instanceof Student) && (id != null) 
+             ? id.equals(((Student) object).id) 
+             : (object == this);
+    }
 	
 
 }

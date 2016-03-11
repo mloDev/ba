@@ -9,7 +9,8 @@
     	"degrade": true
     	}
     ,
-    "email": "schneiderTobias@stud.de"
+    "email": "schneiderTobias@stud.de",
+    "privemail": "test@priv.de“
   },
   {
     "_class": "de.mlo.ba.bootfaces.domain.Student",
@@ -18,6 +19,11 @@
     "surName": "Hans",
     "matNo": 12345,
     "email": "hanspeter@stud.de"
+  },
+  {
+    "_class": "de.mlo.ba.bootfaces.domain.Req",
+    "id": 1,
+    "name": "Peter"
   }
 
 ]

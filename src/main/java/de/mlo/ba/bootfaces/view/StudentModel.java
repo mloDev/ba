@@ -11,32 +11,22 @@ import javax.faces.context.FacesContext;
 
 import de.mlo.ba.bootfaces.domain.Student;
 import de.mlo.ba.bootfaces.persistence.StudentRepository;
+import lombok.Getter;
+import lombok.Setter;
 
 @ManagedBean(name = "stModel", eager = true)
 @RequestScoped
 public class StudentModel {
 	
     @ManagedProperty(value = "#{studentRepository}")
+    @Setter
+    @Getter
     StudentRepository studentRepository;
     
     @ManagedProperty(value = "#{student}")
+    @Setter
+    @Getter
     private StudentView student;
-
-	    public void setStudent(StudentView student) {
-	        this.student = student;
-	    }
-
-	    public StudentView getstudent() {
-	        return student;
-	    }
-
-	    public StudentRepository getStudentRepository() {
-	        return studentRepository;
-	    }
-
-	    public void setStudentRepository(StudentRepository studentRepository) {
-	        this.studentRepository = studentRepository;
-	    }
 
 	    public String doCreateStudent() {
 	        Student created = new Student();
@@ -75,6 +65,7 @@ public class StudentModel {
 	            view.setEMail(entity.getEMail());
 	            view.setGender(entity.getGender());
 	            view.setSurName(entity.getSurName());
+	            view.setReqList(entity.getReqList());
 	            students.add(view);
 	        }
 	        return students;
@@ -88,6 +79,7 @@ public class StudentModel {
 	        this.student.setEMail(student.getEMail());
 	        this.student.setGender(student.getGender());
 	        this.student.setSurName(student.getSurName());
+	        this.student.setReqList(student.getReqList());
 	    }
 
 }

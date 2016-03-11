@@ -22,7 +22,8 @@ public class FacesRewriteConfigurationProvider extends HttpConfigurationProvider
 	   {
 	     return ConfigurationBuilder.begin()
 	       .addRule(Join.path("/").to("/index.jsf"))
-	       .addRule(Join.path("/student/{id}/").to("/viewStudent.jsf"));
+	       .addRule(Join.path("/student/{id}/").to("/viewStudent.jsf"))
+	       .addRule(Join.path("/req/{id}/").to("/viewReq.jsf"));
 	    }
 	
 }

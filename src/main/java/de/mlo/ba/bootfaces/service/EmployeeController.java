@@ -16,13 +16,13 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 	
-	@RequestMapping("/service/students")
+	@RequestMapping("/service/employees")
     public @ResponseBody
     List<Employee> getAllEmployees() {
         return this.employeeRepository.findAll();
     }
     
-    @RequestMapping(value="/service/student/{id}", method=RequestMethod.GET)
+    @RequestMapping(value="/service/employee/{id}", method=RequestMethod.GET)
     public @ResponseBody Employee getEmployeeById(@PathVariable Long id) {
         return this.employeeRepository.findOne(id);
     }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"  >
+    <ui:composition template="layout.xhtml">
+        <ui:define name="content">
+            <h:form id="requestForm" prependId="false">            
+            <p:dialog widgetVar="requestAddDlg" modal="false">
+    			<p:fieldset legend="Create a New Request">
+                <h:panelGrid columns="2" border="0"  layout="grid" style="margin: 20px;">
+                    <p:outputLabel value="Name : "/>
+                    <p:inputText id="Name" value="#{req.name}" size=""/>
+            		<p:selectOneMenu id="title" value="#{req.student}" style="width:150px">
+                		<f:selectItem itemLabel="Select Student" itemValue="" noSelectionOption="true" />
+                		<f:selectItems var="student" itemLabel="#{student.matNo}" value="#{stModel.findAllStudents()}" />
+            		</p:selectOneMenu>
+                </h:panelGrid>
+                <p:commandButton value="Create" update="requestlist" oncomplete="PF('requestAddDlg').hide();" actionListener="#{reqModel.doCreateRequest()}"/>
+			</p:fieldset>
+			</p:dialog>
+			
+
+            <h3 class="title ui-widget-header ui-corner-all" style="font-family: Arial, sans-serif;">
+            	Alle Anträge	
+            	<p:commandButton sytleClass="pull-right" value="Add request" type="button" onclick="PF('requestAddDlg').show();" />
+            </h3>
+            
+            
+            
+<p:dataTable id="requestlist" var="req" value="#{reqModel.findAllReqs()}">
+        <p:column headerText="Id">
+            <h:outputText value="#{req.id}" />
+        </p:column>
+        <p:column headerText="Name">
+            <h:outputText value="#{req.name}" />
+        </p:column>
+        <p:column headerText="Student Vorname">
+            <h:outputText value="#{req.student.surName}" />
+        </p:column>
+        <p:column headerText="Student Name">
+            <h:outputText value="#{req.student.name}" />
+        </p:column>
+        <p:column style="width:32px;text-align: center">
+        	<p:button icon="ui-icon-search" outcome="viewReq.xhtml?id=#{req.id}"> </p:button>
+        </p:column>
+    </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
