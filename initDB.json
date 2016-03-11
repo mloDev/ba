@@ -1,0 +1,23 @@
+[
+  {
+    "_class": "de.mlo.ba.bootfaces.domain.Employee",
+    "name": "Schneider",
+    "surName": "Tobias",
+    "title": {
+        "_class": "de.mlo.ba.bootfaces.domain.Title",
+    	"title": "B.Sc",
+    	"degrade": true
+    	}
+    ,
+    "email": "schneiderTobias@stud.de"
+  },
+  {
+    "_class": "de.mlo.ba.bootfaces.domain.Student",
+    "id": 1,
+    "name": "Peter",
+    "surName": "Hans",
+    "matNo": 12345,
+    "email": "hanspeter@stud.de"
+  }
+
+]

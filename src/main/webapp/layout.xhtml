@@ -11,24 +11,36 @@
         <title><ui:insert name="title">Default title</ui:insert></title>
     </h:head>
     <h:body>
-        <p:link value="Create a book" outcome="index.xhtml"/>
-        <div class="ui-grid ui-grid-responsive">
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-3"></div>
-                <div class="ui-grid-col-6"></div>
-                <div class="ui-grid-col-3"></div>
-            </div>
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-3"></div>
-                <div class="ui-grid-col-6">
+	<h:outputStylesheet name="css/style.css" />
+    <p:layout fullPage="true">
+ 
+    <p:layoutUnit position="north" size="100" header="Top" resizable="false" closable="false" collapsible="false">
+        <p:link value="Create a student" outcome="index.xhtml"/>
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="west" size="200" header="Menü" resizable="false" closable="false" collapsible="true">
+        <p:menu toggleable="true">
+        <p:submenu label="Verwaltung">
+            <p:menuitem value="Studenten" outcome="index.xhtml" icon="ui-icon-home" />
+            <p:menuitem value="Mitarbeiter" outcome="empView.xhtml" icon="ui-icon-home" />
+        </p:submenu>
+        <p:submenu label="Berichte">
+            <p:menuitem value="Berichte" outcome="index.xhtml" icon="ui-icon-home" />
+        </p:submenu>
+        <p:submenu label="Admin">
+            <p:menuitem value="Berichte verwalten" outcome="index.xhtml" icon="ui-icon-home" />
+        </p:submenu>
+    	</p:menu>
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center">
+                <div class="ui-grid-col-12">
                     <p:growl for="errors" showDetail="true" autoUpdate="true"/>
                     <ui:insert name="content">Default content</ui:insert>
                 </div>
-                <div class="ui-grid-col-3"></div>
-            </div>
-        </div>
-        <br/><br/>
-        <h:outputText value="Oakdale Software Tutorial" style="font-style: italic"/>
+    </p:layoutUnit>
+ 
+</p:layout>
     </h:body>
 </f:view>
 </html>

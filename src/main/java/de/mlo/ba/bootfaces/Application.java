@@ -1,4 +1,4 @@
-package com.oakdalesoft.bootfaces;
+package de.mlo.ba.bootfaces;
 
 import java.util.EnumSet;
 
@@ -25,7 +25,7 @@ import javax.servlet.DispatcherType;
  */
 
 @EnableAutoConfiguration
-@ComponentScan({"com.oakdalesoft.bootfaces"})
+@ComponentScan({"de.mlo.ba.bootfaces"})
 public class Application extends SpringBootServletInitializer {
 	
 	@Value("${init.json}")
