@@ -1,0 +1,5 @@
+ul.ui-menu-child
+{
+	white-space: nowrap;
+    width: 200px !important;
+}

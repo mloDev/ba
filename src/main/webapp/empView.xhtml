@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"  >
+    <ui:composition template="layout.xhtml">
+        <ui:define name="content">
+            <h:form id="employeeForm" prependId="false">            
+            <p:dialog widgetVar="employeeAddDlg" modal="false">
+    			<p:fieldset legend="Create a New Empolyee">
+                <h:panelGrid columns="2" border="0"  layout="grid" style="margin: 20px;">
+                    <p:outputLabel value="Name : "/>
+                    <p:inputText id="Name" value="#{employee.name}" size=""/>
+                    <p:outputLabel value="Vorname : "/>
+                    <p:inputText id="Vorname" value="#{employee.surName}"/>
+                    <p:outputLabel value="eMail : "/>
+                    <p:inputText id="Email" value="#{employee.EMail}"/>
+                    <p:outputLabel for="title" value="Title : " />
+            		<p:selectOneMenu id="title" value="#{employee.title}" style="width:150px">
+                		<f:selectItem itemLabel="Select Title" itemValue="" noSelectionOption="true" />
+                		<f:selectItems value="#{titleModel.findAllTitleNames()}" />
+            		</p:selectOneMenu>
+                </h:panelGrid>
+                <p:commandButton value="Create" update="employeelist" oncomplete="PF('employeeAddDlg').hide();" actionListener="#{empModel.doCreateEmployee()}"/>
+			</p:fieldset>
+			</p:dialog>
+			
+			
+			
+			 
+
+            <h3 class="title ui-widget-header ui-corner-all" style="font-family: Arial, sans-serif;">
+            	List of employees	
+            	<p:commandButton sytleClass="pull-right" value="Add employee" type="button" onclick="PF('employeeAddDlg').show();" />
+            </h3>
+            
+            
+            
+<p:dataTable id="employeelist" var="emp" value="#{empModel.findAllEmployees()}">
+        <p:column headerText="Geschlecht">
+            <h:outputText value="#{emp.gender}" />
+        </p:column>
+        <p:column headerText="Title">
+            <h:outputText value="" />
+        </p:column>
+        <p:column headerText="Vorname">
+            <h:outputText value="#{emp.surName}" />
+        </p:column>
+        <p:column headerText="Name">
+            <h:outputText value="#{emp.name}" />
+        </p:column>
+        <p:column headerText="Institut">
+            <h:outputText value="#{emp.institut}" />
+        </p:column>
+        <p:column headerText="eMail-Adresse">
+            <h:outputText value="#{st.EMail}" />
+        </p:column>
+        <p:column style="width:32px;text-align: center">
+        	<p:button icon="ui-icon-search" outcome="viewStudent.xhtml?id=#{emp.id}"> </p:button>
+        </p:column>
+    </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
