@@ -1,18 +1,18 @@
 [
   {
-    "_class": "de.mlo.ba.bootfaces.domain.Employee",
+    "_class": "de.mlo.ba.domain.Employee",
     "id": 1,
     "name": "Schneider",
     "surName": "Tobias",
     "email": "schneiderTobias@stud.de",
     "title": {
-        "_class": "de.mlo.ba.bootfaces.domain.Title",
+        "_class": "de.mlo.ba.domain.Title",
     	"title": "B.Sc",
     	"degrade": true
     	}
   },
   {
-    "_class": "de.mlo.ba.bootfaces.domain.Student",
+    "_class": "de.mlo.ba.domain.Student",
     "id": 1,
     "name": "Peter",
     "surName": "Hans",
@@ -20,11 +20,11 @@
     "email": "hanspeter@stud.de"
   },
     {
-    "_class": "de.mlo.ba.bootfaces.domain.Req",
+    "_class": "de.mlo.ba.domain.Req",
     "id": 0,
     "name": "Krank",
     "student": {
-        "_class": "de.mlo.ba.bootfaces.domain.Student",
+        "_class": "de.mlo.ba.domain.Student",
     	"id": 2,
     	"name": "Ort",
     	"surName": "Ralf",
