@@ -1,7 +1,8 @@
-package de.mlo.ba.config;
+package de.mlo.ba;
 
 import java.util.EnumSet;
 
+import org.h2.tools.Server;
 import org.ocpsoft.rewrite.servlet.RewriteFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +17,9 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.PathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.repository.init.Jackson2RepositoryPopulatorFactoryBean;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+
+import de.mlo.ba.config.SecurityConfig;
 
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.DispatcherType;
@@ -26,6 +30,7 @@ import javax.servlet.DispatcherType;
 
 @EnableAutoConfiguration
 @ComponentScan
+@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class Application extends SpringBootServletInitializer {
 	
 	@Value("${init.json}")
@@ -71,6 +76,19 @@ public class Application extends SpringBootServletInitializer {
 		}
 
 		return factory;
+    }
+    
+    @Bean
+    org.h2.tools.Server h2Server() {
+        Server server = new Server();
+        try {
+            server.runTool("-tcp");
+            server.runTool("-tcpAllowOthers");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return server;
+
     }
 
 }

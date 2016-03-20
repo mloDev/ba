@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import de.mlo.ba.domain.Title;
 import de.mlo.ba.persistence.TitleRepository;
 
+@RestController
 public class TitleController {
 
 	@Autowired
@@ -26,4 +28,5 @@ public class TitleController {
     public @ResponseBody Title getTitleById(@PathVariable Long id) {
         return this.titleRepository.findOne(id);
     }
+    
 }

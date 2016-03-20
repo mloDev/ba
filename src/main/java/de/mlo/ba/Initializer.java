@@ -1,4 +1,4 @@
-package de.mlo.ba.config;
+package de.mlo.ba;
 
 import org.h2.server.web.WebServlet;
 import org.springframework.boot.context.embedded.ServletContextInitializer;
@@ -21,12 +21,5 @@ public class Initializer implements ServletContextInitializer {
         servletContext.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", "true");
         servletContext.setInitParameter("primefaces.THEME", "bootstrap");
     }
-
     
-    @Bean
-    ServletRegistrationBean h2servletRegistration(){
-        ServletRegistrationBean registrationBean = new ServletRegistrationBean( new WebServlet());
-        registrationBean.addUrlMappings("/console/*");
-        return registrationBean;
-    }
 }

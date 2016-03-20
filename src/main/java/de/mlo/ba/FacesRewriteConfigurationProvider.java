@@ -1,4 +1,4 @@
-package de.mlo.ba.config;
+package de.mlo.ba;
 
 import javax.servlet.ServletContext;
 

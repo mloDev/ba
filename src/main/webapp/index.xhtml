@@ -20,6 +20,9 @@
                     <p:inputText id="MatNo" value="#{student.matNo}"/>
                     <p:outputLabel value="eMail : "/>
                     <p:inputText id="Email" value="#{student.EMail}"/>
+                      <input type="hidden"
+    					name="${_csrf.parameterName}"
+    					value="${_csrf.token}"/>
                 </h:panelGrid>
                 <p:commandButton value="Create" update="studentlist" oncomplete="PF('studentAddDlg').hide();" actionListener="#{stModel.doCreateStudent()}"/>
 			</p:fieldset>
@@ -29,6 +32,7 @@
             	List of students	
             	<p:commandButton sytleClass="pull-right" value="Add student" type="button" onclick="PF('studentAddDlg').show();" />
             </h3>
+            
             
             
             
@@ -49,7 +53,7 @@
         	<p:button icon="ui-icon-search" outcome="viewStudent.xhtml?id=#{st.id}"> </p:button>
         </p:column>
     </p:dataTable>
-            </h:form>
+    </h:form>
         </ui:define>
     </ui:composition>
 </html>
